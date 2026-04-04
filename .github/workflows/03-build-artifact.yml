@@ -43,6 +43,8 @@ jobs:
         uses: docker/setup-buildx-action@v3 
         # Create the packaged application image with one traceable tag.
         # The deploy workflow will run this exact same tag later.
+      - name: build docker image
+        uses: docker/build-push-action@v5
         with:
          context: .
          push: false

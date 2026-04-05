@@ -1,7 +1,7 @@
 name: 04 Deploy Workflow Copy
 
 on:
-  push:
+    push:
 
 env:
   BASE_IMAGE: python:3.12-slim

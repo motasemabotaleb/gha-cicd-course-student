@@ -2,6 +2,8 @@ name: verify
 
 on:
   pull_request:
+    branches: [ "main" ]
+    types: [opened]
 
 env:
   BASE_IMAGE: python:3.12-slim

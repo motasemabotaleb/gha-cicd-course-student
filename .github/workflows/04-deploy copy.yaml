@@ -29,8 +29,20 @@ jobs:
             -p 8000:8000 \
             --name ${{ env.CONTAINER_NAME }} \
             ${{ env.IMAGE_NAME }}
+      - name: Check running containers
+        run: docker ps
 
-
+      - name: Smoke test deployed app
+        run: |
+          for attempt in 1 2 3 4 5; do
+            if curl --fail --silent http://127.0.0.1:8000/health; then
+              exit 0
+            fi
+            echo "Waiting for app to become ready..."
+            sleep 2
+          done
+          echo "App did not become ready in time."
+          exit 1
 
       - name: Stop container
         if: always()

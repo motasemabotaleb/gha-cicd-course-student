@@ -12,5 +12,4 @@ ENV APP_ENV=$APP_ENV
 ENV PORT=$APP_PORT
 
 COPY . .
-
 CMD ["python", "app.py"]

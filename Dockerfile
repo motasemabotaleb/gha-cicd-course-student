@@ -3,6 +3,14 @@ ARG BASE_IMAGE
 FROM ${BASE_IMAGE}
 
 WORKDIR /app
+
+ARG APP_ENV
+ARG APP_PORT
+
+# runtime env
+ENV APP_ENV=$APP_ENV
+ENV PORT=$APP_PORT
+
 COPY . .
 
 CMD ["python", "app.py"]

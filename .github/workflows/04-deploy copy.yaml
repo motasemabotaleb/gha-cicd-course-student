@@ -8,6 +8,7 @@ env:
   IMAGE_NAME: tiny-health-app
   CONTAINER_NAME: tiny-health-container
   APP_PORT: 8000
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -44,9 +45,9 @@ jobs:
           docker ps
 
           if [ "$(docker ps -q -f name=${CONTAINER_NAME})" ]; then
-            echo "Container is running "
+            echo "Container is running ✅"
           else
-            echo "Container is NOT running "
+            echo "Container is NOT running ❌"
             docker logs ${CONTAINER_NAME}
             exit 1
           fi
